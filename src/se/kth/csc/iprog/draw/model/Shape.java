@@ -1,46 +1,45 @@
 package se.kth.csc.iprog.draw.model;
 
 public abstract class Shape {
-	
-	double x,y,w,h;
-	
-	public abstract double getSurface();
 
-	public double getX() {
-		return x;
-	}
+    double x, y, w, h;
 
-	void setX(double x) {
-		this.x = x;
-	}
+    public abstract double getSurface();
 
-	public double getY() {
-		return y;
-	}
+    public double getX() {
+        return x;
+    }
 
-	void setY(double y) {
-		this.y = y;
-	}
+    void setX(double x) {
+        this.x = x;
+    }
 
-	public double getW() {
-		return w;
-	}
+    public double getY() {
+        return y;
+    }
 
-	void setW(double w) throws IllegalArgumentException {
-		if(w<0)
-			throw new IllegalArgumentException("Width must be positive");
-		this.w = w;
-	}
+    void setY(double y) {
+        this.y = y;
+    }
 
-	public double getH() {
-		return h;
-	}
+    public double getW() {
+        return w;
+    }
 
-	void setH(double h) throws IllegalArgumentException {
-		if(h<0)
-			throw new IllegalArgumentException("Height must be postitive");
-		this.h = h;
-	}
-	
+    void setW(double w) {
+        if (w < 0 && getClass() != Segment.class)
+            throw new IllegalArgumentException("Width must be positive");
+        this.w = w;
+    }
+
+    public double getH() {
+        return h;
+    }
+
+    void setH(double h) {
+        if (h < 0 && getClass() != Segment.class)
+            throw new IllegalArgumentException("Height must be postitive");
+        this.h = h;
+    }
 
 }
