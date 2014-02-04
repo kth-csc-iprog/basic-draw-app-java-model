@@ -17,11 +17,5 @@ public class Segment extends Shape {
     void setH(double h) {
         this.h = h;
     }
-	
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return "Segment";
-	}
 
 }
