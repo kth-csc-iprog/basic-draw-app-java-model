@@ -48,6 +48,11 @@ public class ShapeContainer extends Observable {
         return shape;
     }
 
+    /**
+     * List the shapes in the model
+     * 
+     * @return an unmodifiable list of shapes
+     */
     public List<Shape> getAllShapes() {
         return Collections.unmodifiableList(shapes);
     }
