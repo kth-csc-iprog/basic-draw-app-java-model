@@ -27,7 +27,7 @@ public abstract class Shape {
     }
 
     void setW(double w) {
-        if (w < 0 && getClass() != Segment.class)
+        if (w < 0)
             throw new IllegalArgumentException("Width must be positive");
         this.w = w;
     }
@@ -37,9 +37,14 @@ public abstract class Shape {
     }
 
     void setH(double h) {
-        if (h < 0 && getClass() != Segment.class)
+        if (h < 0)
             throw new IllegalArgumentException("Height must be postitive");
         this.h = h;
     }
 
+    @Override
+    public String toString() {
+        String name = getClass().getName();
+        return name.substring(name.lastIndexOf('.') + 1).toLowerCase() + " " + x + "," + y + "," + w + "," + h;
+    }
 }
