@@ -6,5 +6,11 @@ public class Rectangle extends Shape {
 	public double getSurface() {
 		return h*w;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Rectangle";
+	}
 
 }
