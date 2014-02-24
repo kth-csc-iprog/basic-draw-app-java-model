@@ -24,6 +24,10 @@ public class ShapeContainer extends Observable {
     }
 
     public Shape addShape(int type, double x, double y, double w, double h) throws IllegalArgumentException {
+        return addShape(type, x, y, w, h, shapes.size());
+    }
+
+    public Shape addShape(int type, double x, double y, double w, double h, int index) throws IllegalArgumentException {
         Shape shape;
         switch (type) {
             case ELLIPSE:
@@ -42,7 +46,7 @@ public class ShapeContainer extends Observable {
         shape.setY(y);
         shape.setH(h);
         shape.setW(w);
-        shapes.add(shape);
+        shapes.add(index, shape);
         setChanged();
         notifyObservers();
         return shape;

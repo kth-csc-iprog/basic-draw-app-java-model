@@ -44,7 +44,10 @@ public abstract class Shape {
 
     @Override
     public String toString() {
-        String name = getClass().getName();
-        return name.substring(name.lastIndexOf('.') + 1).toLowerCase() + " " + x + "," + y + "," + w + "," + h;
+        return getType() + " " + x + "," + y + "," + w + "," + h;
+    }
+
+    public String getType() {
+        return getClass().getName().substring(getClass().getName().lastIndexOf('.') + 1).toLowerCase();
     }
 }
