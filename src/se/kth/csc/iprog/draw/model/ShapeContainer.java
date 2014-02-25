@@ -23,33 +23,19 @@ public class ShapeContainer extends Observable {
         notifyObservers();
     }
 
+    public Shape addShape(Shape shape, int index) {
+        shapes.add(index, shape);
+        setChanged();
+        notifyObservers();
+        return shape;
+    }
+
     public Shape addShape(int type, double x, double y, double w, double h) throws IllegalArgumentException {
         return addShape(type, x, y, w, h, shapes.size());
     }
 
     public Shape addShape(int type, double x, double y, double w, double h, int index) throws IllegalArgumentException {
-        Shape shape;
-        switch (type) {
-            case ELLIPSE:
-                shape = new Ellipse();
-                break;
-            case RECTANGLE:
-                shape = new Rectangle();
-                break;
-            case SEGMENT:
-                shape = new Segment();
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown shape type");
-        }
-        shape.setX(x);
-        shape.setY(y);
-        shape.setH(h);
-        shape.setW(w);
-        shapes.add(index, shape);
-        setChanged();
-        notifyObservers();
-        return shape;
+        return addShape(Shape.createShape(type, x, y, w, h), index);
     }
 
     /**
