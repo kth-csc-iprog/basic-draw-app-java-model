@@ -1,8 +1,8 @@
 package se.kth.csc.iprog.draw.model;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.Reader;
+import java.io.Writer;
 import java.util.Properties;
 
 public abstract class Shape {
@@ -56,7 +56,7 @@ public abstract class Shape {
         return getClass().getName().substring(getClass().getName().lastIndexOf('.') + 1).toLowerCase();
     }
 
-    public void writeTo(OutputStream out) throws IOException {
+    public void writeTo(Writer out) throws IOException {
         Properties p = new Properties();
         p.put("type", getType());
         p.put("x", "" + getX());
@@ -88,7 +88,7 @@ public abstract class Shape {
         return shape;
     }
 
-    static public Shape readFrom(InputStream in) throws IOException {
+    static public Shape readFrom(Reader in) throws IOException {
         Properties p = new Properties();
         p.load(in);
         in.close();
@@ -105,9 +105,8 @@ public abstract class Shape {
                 type = ShapeContainer.SEGMENT;
                 break;
         }
-        return Shape.createShape(type, Double.parseDouble(p.getProperty("x")),
-            Double.parseDouble(p.getProperty("y")), Double.parseDouble(p.getProperty("w")),
-            Double.parseDouble(p.getProperty("h")));
+        return Shape.createShape(type, Double.parseDouble(p.getProperty("x")), Double.parseDouble(p.getProperty("y")),
+            Double.parseDouble(p.getProperty("w")), Double.parseDouble(p.getProperty("h")));
     }
 
 }
